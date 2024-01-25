@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div>
+        <p id="output">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tenetur autem ab eveniet nobis harum saepe ullam tempora ducimus illum laboriosam fugiat dolorem placeat culpa sint, laudantium obcaecati. Fuga, quod.</p>
+        <button  id="btn">Click me</button>
+
+    </div>
+
+    <script>
+       function updateOutput(message){
+      document.getElementById("output").innerText = message;
+       }
+       function registerCallback(callback){
+        document.getElementById("btn").addEventListener('click',function(){
+            setTimeout(function(){
+                callback("hello");
+            },1000);
+        });
+       }
+       registerCallback(updateOutput());
+
+    </script>
+</body>
+</html>

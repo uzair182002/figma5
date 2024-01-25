@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="signupForm" onsubmit="validateForm(event)">
+        <label for="password">Password:</label><br><br>
+  <input type="password" name="password" id="password" required>
+  <input type="submit" value="Sign Up">
+</form>
+
+    <script>
+        function validateForm(event){
+            event.preventDefault();
+    
+        const password = document.getElementById('password').value;
+
+        const passwordRegex =/[A-Z]?[a-z]{3,6}\Wg{2}+[0-9]{3}$/;
+
+        const passwordIsValid = passwordRegex.test(password);
+
+        if(passwordIsValid){
+            alert("u are accepted")
+        }
+    }
+    </script>
+</body>
+</html>

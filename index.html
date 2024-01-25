@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Signup Form</h2>
+
+  <form id="signupForm" onsubmit="validateForm(event)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <span id="usernameError" class="error"></span>
+
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span id="emailError" class="error"></span>
+
+    <br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <span id="passwordError" class="error"></span>
+
+    <br>
+
+    <input type="submit" value="Sign Up">
+  </form>
+
+  <script>
+    function validateForm(event){
+        event.preventDefault();
+
+        const userName = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const userNameRegex = /^[a-zA-Z0-9_]{5,20}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[com]+$/;
+        const passwordRegex = /^[A-Z]{1}[a-z]+[@][0-9]{1,3}$/;
+
+        const userNameIsValid = userNameRegex.test(userName);
+        const emailIsValid = emailRegex.test(email);
+        const passwordIsValid = passwordRegex.test(password);
+
+        document.getElementById('usernameError').textContent = userNameIsValid ? ' ' : 'Invalid username';
+        document.getElementById('emailError').textContent = emailIsValid ? ' ' : 'Invalid email';
+        document.getElementById('passwordError').textContent = passwordIsValid ? ' ' : 'Password must be at least 6 characters';
+
+        if (userNameIsValid && emailIsValid && passwordIsValid) {
+            alert('Form submitted successfully');
+        }
+
+        
+
+    }
+  </script>
+
+
+</body>
+</html>
